@@ -195,8 +195,12 @@
                 linear-gradient(to top, rgba(14,14,18,0.97) 0%, rgba(14,14,18,0.9) 18%, rgba(14,14,18,0.55) 38%, rgba(14,14,18,0.15) 60%, transparent 82%),
                 linear-gradient(to right, rgba(14,14,18,0.78) 0%, rgba(14,14,18,0.25) 36%, transparent 62%);
         }
+        .hero-fx {
+            position: absolute; inset: 0; z-index: 1;
+            pointer-events: none;   /* never blocks the CTA buttons */
+        }
         .hero-inner {
-            position: relative; z-index: 1;
+            position: relative; z-index: 2;
             padding: 88px 0 clamp(48px, 10vw, 70px);
             max-width: 720px; width: 100%;
         }
@@ -231,7 +235,7 @@
         .scroll-hint {
             position: absolute; bottom: max(20px, env(safe-area-inset-bottom)); left: 50%;
             transform: translateX(-50%); color: var(--muted); font-size: 11px;
-            letter-spacing: 3px; text-transform: uppercase; z-index: 1;
+            letter-spacing: 3px; text-transform: uppercase; z-index: 3;
             display: none; flex-direction: column; align-items: center; gap: 8px;
         }
         .scroll-hint i { animation: bob 1.8s infinite; }
@@ -1102,6 +1106,100 @@
         entries.forEach(en => { if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* =========================================================
+       HERO LIGHT FX — subtle warm embers + soft motes + glow
+       Self-contained, no libraries. Sits behind the text, pauses
+       off-screen, and is skipped entirely for reduce-motion users.
+    ========================================================= */
+    (function heroFX(){
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const canvas = document.createElement('canvas');
+        canvas.className = 'hero-fx';
+        canvas.setAttribute('aria-hidden', 'true');
+        hero.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+
+        let w = 0, h = 0, dpr = 1, raf = null, t = 0;
+        const isMobile = window.matchMedia('(max-width:640px)').matches;
+        const EMBERS = isMobile ? 9 : 16;   // rising warm sparks
+        const MOTES  = isMobile ? 9 : 12;   // gentle falling light
+        const rand = (a, b) => a + Math.random() * (b - a);
+        let parts = [];
+
+        function size(){
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
+            const r = hero.getBoundingClientRect();
+            w = r.width; h = r.height;
+            canvas.width = w * dpr; canvas.height = h * dpr;
+            canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        function ember(){
+            return { type:'e', x:rand(0,w), y:rand(h*0.45, h+20),
+                r:rand(0.6,1.7), vx:rand(-0.12,0.12), vy:rand(-0.55,-0.22),
+                a:0, aMax:rand(0.12,0.40), d:rand(0,6.28),
+                c: Math.random() < 0.5 ? '224,163,62' : '226,120,74' };
+        }
+        function mote(){
+            return { type:'m', x:rand(0,w), y:rand(-20, h*0.5),
+                r:rand(0.5,1.5), vx:rand(-0.08,0.08), vy:rand(0.10,0.26),
+                a:0, aMax:rand(0.08,0.26), d:rand(0,6.28), c:'237,234,228' };
+        }
+        function seed(){
+            parts = [];
+            for (let i=0;i<EMBERS;i++) parts.push(ember());
+            for (let i=0;i<MOTES;i++)  parts.push(mote());
+        }
+        function frame(){
+            ctx.clearRect(0,0,w,h);
+            t += 0.008;
+
+            /* breathing warm glow, center-right (toward the candle side) */
+            const gx = w*0.66, gy = h*0.35, gr = Math.max(w,h)*0.35;
+            const ga = 0.1 + 0.030*(0.5 + 0.5*Math.sin(t));
+            const g = ctx.createRadialGradient(gx,gy,0, gx,gy,gr);
+            g.addColorStop(0, 'rgba(224,163,62,'+ga+')');
+            g.addColorStop(1, 'rgba(224,163,62,0)');
+            ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
+
+            for (const p of parts){
+                p.d += 0.01;
+                p.x += p.vx + Math.sin(p.d)*0.14;
+                p.y += p.vy;
+                if (p.type === 'e'){
+                    if (p.a < p.aMax) p.a += 0.005;
+                    if (p.y < h*0.28) p.a -= 0.006;
+                    if (p.y < -10 || p.a <= 0) Object.assign(p, ember());
+                } else {
+                    if (p.a < p.aMax) p.a += 0.004;
+                    if (p.y > h*0.82) p.a -= 0.005;
+                    if (p.y > h+10 || p.a <= 0) Object.assign(p, mote());
+                }
+                const a = Math.max(0, p.a);
+                ctx.beginPath();
+                ctx.shadowBlur = p.type === 'e' ? 6 : 3;
+                ctx.shadowColor = 'rgba('+p.c+','+a+')';
+                ctx.fillStyle = 'rgba('+p.c+','+a+')';
+                ctx.arc(p.x, p.y, p.r, 0, 6.2832);
+                ctx.fill();
+            }
+            ctx.shadowBlur = 0;
+            raf = requestAnimationFrame(frame);
+        }
+        function start(){ if (!raf) raf = requestAnimationFrame(frame); }
+        function stop(){ if (raf){ cancelAnimationFrame(raf); raf = null; } }
+
+        size(); seed();
+        window.addEventListener('resize', () => { size(); });
+        /* run only while the hero is on screen */
+        new IntersectionObserver(es => {
+            es.forEach(e => e.isIntersecting ? start() : stop());
+        }).observe(hero);
+    })();
     </script>
 </body>
 </html>
