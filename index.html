@@ -1126,7 +1126,7 @@
         let w = 0, h = 0, dpr = 1, raf = null, t = 0;
         const isMobile = window.matchMedia('(max-width:640px)').matches;
         const EMBERS = isMobile ? 9 : 16;   // rising warm sparks
-        const MOTES  = isMobile ? 15 : 20;   // gentle falling light
+        const MOTES  = isMobile ? 20 : 40;   // gentle falling light
         const rand = (a, b) => a + Math.random() * (b - a);
         let parts = [];
 
@@ -1146,7 +1146,7 @@
         }
         function mote(){
             return { type:'m', x:rand(0,w), y:rand(-20, h*0.5),
-                r:rand(0.5,1.5), vx:rand(-0.08,0.08), vy:rand(0.15,0.35),
+                r:rand(0.5,1.5), vx:rand(-0.08,0.08), vy:rand(0.20,0.45),
                 a:0, aMax:rand(0.15,0.45), d:rand(0,6.28), c:'237,234,228' };
         }
         function seed(){
@@ -1158,12 +1158,21 @@
             ctx.clearRect(0,0,w,h);
             t += 0.008;
 
-            /* breathing warm glow, center-right (toward the candle side) */
-            const gx = w*0.66, gy = h*0.35, gr = Math.max(w,h)*0.35;
-            const ga = 0.1 + 0.030*(0.5 + 0.5*Math.sin(t));
+            /* candle flame glow — anchored on the flame, flickering irregularly */
+            const gx = w*0.75, gy = h*0.30;             // Move the light or flame position  w - horizontal/h - vertical(right side)
+            /* layered waves + a little noise = organic flicker, not a smooth pulse */
+            const flicker = 0.55
+                + 0.18*Math.sin(t*7.0)
+                + 0.12*Math.sin(t*13.0 + 1.3)
+                + 0.10*Math.sin(t*23.0 + 2.1)
+                + 0.05*(Math.random()-0.5);
+            const fl = Math.max(0, Math.min(1, flicker));
+            const gr = Math.max(w,h) * (0.40 + 0.05*fl); /* this line controls size of the flame*/
+            const ga = 0.10 + 0.16*fl; /* This line increase the light*/
             const g = ctx.createRadialGradient(gx,gy,0, gx,gy,gr);
-            g.addColorStop(0, 'rgba(224,163,62,'+ga+')');
-            g.addColorStop(1, 'rgba(224,163,62,0)');
+            g.addColorStop(0,   'rgba(255,214,140,'+ga+')');
+            g.addColorStop(0.4, 'rgba(224,163,62,'+(ga*0.6)+')');
+            g.addColorStop(1,   'rgba(224,163,62,0)');
             ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
 
             for (const p of parts){
