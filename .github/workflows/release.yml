@@ -15,7 +15,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Extract release notes from CHANGELOG
-        id: notes
         run: |
           VERSION="${GITHUB_REF_NAME}"
           awk -v ver="$VERSION" '
@@ -26,15 +25,12 @@ jobs:
           if [ ! -s release-notes.md ]; then
             git tag -l --format="%(contents)" "$VERSION" > release-notes.md
           fi
-          echo "body<<EOF" >> "$GITHUB_OUTPUT"
-          cat release-notes.md >> "$GITHUB_OUTPUT"
-          echo "EOF" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
-          body: ${{ steps.notes.outputs.body }}
+          body_path: release-notes.md
           draft: false
           prerelease: false
