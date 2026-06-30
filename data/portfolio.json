@@ -1,0 +1,116 @@
+{
+  "site": {
+    "heroImage": "https://cdna.artstation.com/p/assets/images/images/095/886/172/large/art3xile-last-prj0-6.jpg",
+    "aboutBannerImage": "https://cdnb.artstation.com/p/assets/images/images/095/886/063/large/art3xile-aidemon.jpg?1769771852",
+    "canonicalUrl": "https://ja-tm.github.io/Art3xile/"
+  },
+  "stepLabels": ["Design Sheet", "Turnaround", "Expressions & Detail", "Final Design"],
+  "conceptProjects": [
+    {
+      "id": "cinderella",
+      "title": "Cinderella — Ashes & Redemption",
+      "kicker": "Character Design",
+      "role": "Personal project · Lead character",
+      "cat": "Characters",
+      "brief": "A fallen princess reforged as a warrior. The design had to read as royalty and survivor at once — regal silhouette, battle-worn armor, and a colour story built around ash, blood, and gold.",
+      "cover": "https://cdna.artstation.com/p/assets/images/images/090/548/748/large/art3xile-ficha-cen-001.jpg?1769727570",
+      "images": [
+        "https://cdna.artstation.com/p/assets/images/images/090/548/748/large/art3xile-ficha-cen-001.jpg?1769727570",
+        "https://cdnb.artstation.com/p/assets/images/images/090/548/759/large/art3xile-ficha-cen-003.jpg?1754224309",
+        "https://cdna.artstation.com/p/assets/images/images/090/548/754/large/art3xile-ficha-cen-002.jpg?1754224297"
+      ],
+      "published": true,
+      "order": 1
+    },
+    {
+      "id": "prince",
+      "title": "Prince — Winged Paladin",
+      "kicker": "Character Design",
+      "role": "Personal project · Hero",
+      "cat": "Characters",
+      "brief": "A divine knight built on verticality and light. Explored armor language, weapon kit, and a silhouette that stays heroic from every angle of the turnaround.",
+      "cover": "https://cdna.artstation.com/p/assets/images/images/095/872/974/large/art3xile-ficha-pri-001.jpg?1769730756",
+      "images": [
+        "https://cdna.artstation.com/p/assets/images/images/095/872/974/large/art3xile-ficha-pri-001.jpg?1769730756",
+        "https://cdna.artstation.com/p/assets/images/images/095/872/986/large/art3xile-ficha-pri-002.jpg?1769729599",
+        "https://cdna.artstation.com/p/assets/images/images/095/872/996/large/art3xile-ficha-pri-003.jpg?1769729609"
+      ],
+      "published": true,
+      "order": 2
+    },
+    {
+      "id": "rider",
+      "title": "Rider — Street & Machine",
+      "kicker": "Character Design",
+      "role": "Personal project · Protagonist",
+      "cat": "Characters",
+      "brief": "A modern young hero and his transforming mech-bike. Focus on contemporary streetwear, age progression, and a believable relationship between character and vehicle.",
+      "cover": "https://cdna.artstation.com/p/assets/images/images/095/873/036/large/art3xile-ficha-rid-001.jpg?1769730713",
+      "images": [
+        "https://cdna.artstation.com/p/assets/images/images/095/873/036/large/art3xile-ficha-rid-001.jpg?1769730713",
+        "https://cdna.artstation.com/p/assets/images/images/095/873/040/large/art3xile-ficha-rid-002.jpg?1769729762",
+        "https://cdnb.artstation.com/p/assets/images/images/095/873/047/large/art3xile-ficha-rid-003.jpg?1769729771"
+      ],
+      "published": true,
+      "order": 3
+    },
+    {
+      "id": "guardians",
+      "title": "HK — The Lost Symphony",
+      "kicker": "Creature & Character Design",
+      "role": "Personal project · Guardian set",
+      "cat": "Creatures",
+      "brief": "A set of insectoid guardians with distinct elemental identities and personalities. Each carries its own shape language, palette, and short character bio — designed to read as a family yet never be confused for one another.",
+      "cover": "https://cdna.artstation.com/p/assets/images/images/095/871/192/large/art3xile-ilustracion2-6.jpg?1769725402",
+      "images": [
+        "https://cdna.artstation.com/p/assets/images/images/095/871/192/large/art3xile-ilustracion2-6.jpg?1769725402",
+        "https://cdna.artstation.com/p/assets/images/images/095/871/198/large/art3xile-ilustracion2-7.jpg?1769725410",
+        "https://cdna.artstation.com/p/assets/images/images/095/871/186/large/art3xile-ilustracion2-5.jpg?1769725387"
+      ],
+      "published": true,
+      "order": 4
+    },
+    {
+      "id": "weregonk",
+      "title": "Weregonk — Creature Design",
+      "kicker": "Creature Design",
+      "role": "Personal project · Antagonist",
+      "cat": "Creatures",
+      "brief": "A nightmare built for menace and readability. The pass moved from base structure to a sheet of reactions and finally a fully realized creature — keeping the silhouette terrifying at thumbnail scale.",
+      "cover": "https://cdna.artstation.com/p/assets/images/images/095/871/978/large/art3xile-weregonk2-1.jpg?1769727268",
+      "images": [
+        "https://cdna.artstation.com/p/assets/images/images/095/871/978/large/art3xile-weregonk2-1.jpg?1769727268",
+        "https://cdnb.artstation.com/p/assets/images/images/095/871/991/large/art3xile-weregonk2-3.jpg?1769727278",
+        "https://cdna.artstation.com/p/assets/images/images/095/871/982/large/art3xile-weregonk2-2.jpg?1769727272"
+      ],
+      "published": true,
+      "order": 5
+    }
+  ],
+  "illustrations": [
+    { "src": "https://cdnb.artstation.com/p/assets/images/images/095/886/063/large/art3xile-aidemon.jpg?1769771852", "title": "AI Demon", "tag": "Cyberpunk · Key art", "cat": "OC", "published": true, "order": 1 },
+    { "src": "https://cdna.artstation.com/p/assets/images/images/095/886/172/large/art3xile-last-prj0-6.jpg?1769772072", "title": "Le Chevalier D Eon", "tag": "Fan Art", "cat": "Fan Art", "published": true, "order": 2 },
+    { "src": "https://cdna.artstation.com/p/assets/images/images/095/872/494/large/art3xile-sumo-dsarrollo9.jpg?1769728966", "title": "God of the Hot Springs", "tag": "Comic illustration", "cat": "OC", "published": true, "order": 3 },
+    { "src": "https://cdna.artstation.com/p/assets/images/images/095/886/372/large/art3xile-mission10-2.jpg?1769772623", "title": "Mission 10", "tag": "Scene illustration", "cat": "OC", "published": true, "order": 4 },
+    { "src": "https://cdnb.artstation.com/p/assets/images/images/095/885/335/large/art3xile-ilustracion4will1.jpg?1769770481", "title": "Will", "tag": "Portrait commission", "cat": "OC", "published": true, "order": 5 },
+    { "src": "https://cdnb.artstation.com/p/assets/images/images/095/871/893/large/art3xile-captura-de-pantalla-2025-10-07-024959.jpg?1769727015", "title": "Weregonk", "tag": "Character illustration", "cat": "OC", "published": true, "order": 6 },
+    { "src": "https://cdnb.artstation.com/p/assets/images/images/095/873/539/large/art3xile-lilo-eva2.jpg?1769731052", "title": "Ohana", "tag": "Commission · Fan art", "cat": "Fan Art", "published": true, "order": 7 }
+  ],
+  "exile": {
+    "lead": {
+      "src": "https://cdnb.artstation.com/p/assets/images/images/099/801/885/medium/art3xile-horse.jpg?1781016922",
+      "title": "Road Home",
+      "tag": "Our hope"
+    },
+    "works": [
+      { "src": "https://cdnb.artstation.com/p/assets/images/images/095/884/947/large/art3xile-maracucho-r.jpg?1769769784", "title": "Champion of Justice", "tag": "Commission" },
+      { "src": "https://cdna.artstation.com/p/assets/images/images/095/874/052/large/art3xile-vnz1.jpg?1769732768", "title": "Resiliencia Tricolor", "tag": "Tribute" },
+      { "src": "https://cdna.artstation.com/p/assets/images/images/095/873/734/large/art3xile-orinoco15.jpg?1769731556", "title": "Orinoco", "tag": "Cultural tribute" }
+    ]
+  },
+  "featured": [
+    { "type": "project", "id": "cinderella" },
+    { "type": "project", "id": "weregonk" },
+    { "type": "link", "href": "#exile", "kicker": "The Exile Series", "title": "Camino a Casa", "role": "Personal project · Storytelling", "pos": "center 32%", "sub": "Into the Exile Series →" }
+  ]
+}

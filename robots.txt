@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ja-tm.github.io/Art3xile/sitemap.xml
