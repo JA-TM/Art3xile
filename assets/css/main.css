@@ -37,10 +37,6 @@
     0%, 100% { box-shadow: 0 0 0 1px rgba(224, 163, 62, 0.28), 0 0 16px rgba(224, 163, 62, 0.14); }
     50%      { box-shadow: 0 0 0 1px rgba(224, 163, 62, 0.42), 0 0 28px rgba(224, 163, 62, 0.26); }
 }
-@keyframes cta-pulse-rest {
-    0%, 100% { box-shadow: 0 0 8px rgba(226, 75, 74, 0.1); }
-    50%      { box-shadow: 0 0 14px rgba(226, 75, 74, 0.16); }
-}
 @keyframes cta-pulse-hover {
     0%, 100% { box-shadow: 0 0 16px rgba(226, 75, 74, 0.3), 0 0 32px rgba(226, 75, 74, 0.15); }
     50%      { box-shadow: 0 0 24px rgba(226, 75, 74, 0.5), 0 0 40px rgba(226, 75, 74, 0.22); }
@@ -224,20 +220,12 @@ body.menu-open { overflow: hidden; }
     cursor: pointer; border: 1px solid transparent;
 }
 .btn-solid { background: var(--exilio); color: #fff; }
-.btn-solid:hover { background: var(--exilio-dim); transform: translateY(-2px); }
-
-/* Primary CTAs: dim at rest with soft pulse, bright on hover */
-.btn-cta {
-    background: var(--exilio-dim);
-    color: #fff;
-    animation: cta-pulse-rest 3s ease-in-out infinite;
-}
-.btn-cta:hover {
+.btn-solid:hover {
     background: var(--exilio);
     transform: translateY(-2px);
-    animation: cta-pulse-hover 1.5s ease-in-out infinite;
+    animation: cta-pulse-hover 1.8s ease-in-out infinite;
 }
-.btn-cta:active { transform: translateY(0) scale(0.98); }
+.btn-solid:active { transform: translateY(0) scale(0.98); }
 
 .btn-ghost { border-color: var(--line); color: var(--paper); background: transparent; }
 .btn-ghost:hover {
@@ -552,13 +540,15 @@ body.menu-open { overflow: hidden; }
 .chips { display: grid; grid-template-columns: 1fr; gap: 12px; }
 .chip, .edu-item {
     background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    cursor: pointer;
     transition: border-color .25s, color .25s, transform .3s var(--ease), box-shadow .3s;
 }
 .chip { padding: 13px 16px; font-size: 14px; color: var(--text); }
 .chip:hover {
     border-color: var(--exilio); color: var(--paper);
     transform: scale(1.02);
-    animation: glow-pulse-red 2s ease-in-out infinite;
+    box-shadow: 0 0 0 1px rgba(226, 75, 74, 0.3), 0 0 18px rgba(226, 75, 74, 0.2);
+    animation: glow-pulse-red-strong 2s ease-in-out infinite;
 }
 .edu { display: grid; gap: 12px; }
 .edu-item { padding: 16px 18px; border-left: 3px solid var(--oro); }
@@ -566,8 +556,11 @@ body.menu-open { overflow: hidden; }
     border-color: var(--oro);
     border-left-width: 4px;
     transform: scale(1.02);
-    animation: glow-pulse-gold 2s ease-in-out infinite;
+    box-shadow: 0 0 0 1px rgba(224, 163, 62, 0.35), 0 0 20px rgba(224, 163, 62, 0.2);
+    animation: glow-pulse-gold-strong 2s ease-in-out infinite;
 }
+.edu-item:hover h4 { color: var(--paper); }
+.edu-item:hover p { color: var(--text); }
 .edu-item h4 { font-family:'Inter',sans-serif; font-size: 15px; color: var(--paper); font-weight: 600; }
 .edu-item p { font-size: 13px; color: var(--muted); margin-top: 4px; }
 
@@ -583,7 +576,12 @@ body.menu-open { overflow: hidden; }
 }
 .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--muted); }
 .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--exilio); background: var(--surface-2); }
-.contact-form .btn-cta { width: 100%; justify-content: center; margin-top: 4px; padding: 15px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+.contact-form .btn-solid {
+    width: 100%; justify-content: center; margin-top: 4px; padding: 15px;
+    font-size: 14px; text-transform: uppercase; letter-spacing: 1px;
+    font-family: 'Inter', sans-serif;
+    -webkit-appearance: none; appearance: none;
+}
 .socials { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 8px; }
 .socials a {
     display: inline-flex; align-items: center; justify-content: center; gap: 9px;
@@ -717,6 +715,6 @@ footer p { font-size: 12.5px; color: var(--muted); }
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .reveal { opacity: 1; transform: none; }
     .lightbox img { transform: none; opacity: 1; }
-    .btn-cta { background: var(--exilio); }
     .exile-lead .hero-art { animation: none; }
+    .btn-solid:hover { box-shadow: 0 0 20px rgba(226, 75, 74, 0.35); }
 }

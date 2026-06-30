@@ -2,6 +2,13 @@
 
 All notable changes to ART3XILE are tagged with [Semantic Versioning](https://semver.org/).
 
+## [v1.0.1] — 2026-06-30
+
+### Fixed
+- Restored red `btn-solid` styling on Explore the work and Send message buttons
+- Hover now brightens with glow instead of dimming
+- Education cards match Skills hover feedback (scale, border glow, pulse)
+
 ## [v1.0.0] — 2026-06-30
 
 ### Added
