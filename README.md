@@ -75,11 +75,16 @@ This project uses [Semantic Versioning](https://semver.org/) via Git tags.
 ### Release workflow
 
 ```bash
-# After merging changes to main:
-git tag -a v1.1.0 -m "Short description of what changed"
+# 1. Update CHANGELOG.md with the new version section
+# 2. Commit and push to main
 git push origin main
+
+# 3. Create and push the tag (triggers GitHub Release automatically)
+git tag -a v1.1.0 -m "Short description of what changed"
 git push origin v1.1.0
 ```
+
+Pushing a `v*` tag runs [`.github/workflows/release.yml`](.github/workflows/release.yml), which creates a formal GitHub Release using notes from `CHANGELOG.md`.
 
 **When to bump:**
 - `v1.x.0` — new features (new section, CMS field, major UI)
